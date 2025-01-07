@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 import dj_database_url
-from dotenv import load_dotenv 
-load_dotenv() 
+# from dotenv import load_dotenv 
+# load_dotenv() 
 # Access the environment variables 
-VONAGE_API_KEY = os.getenv('VONAGE_API_KEY') 
-VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
-DJANGO_SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+# VONAGE_API_KEY = os.getenv('VONAGE_API_KEY') 
+# VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
+# SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = 'django-insecure-l&395g*-6*j$$t_-u)_ssscbcx%w$d)$*xig+y0n-fr+9k(1x7'
 
 # print(VONAGE_API_SECRET)
 # print(VONAGE_API_KEY)
@@ -31,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-l&395g*-6*j$$t_-u)_ssscbcx%w$d)$*xig+y0n-fr+9k(1x7'
-SECRET_KEY = DJANGO_SECRET_KEY
+# SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
