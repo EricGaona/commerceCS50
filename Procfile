@@ -1,1 +1,1 @@
-web: python manage.py
+web: gunicorn commercecs50.wsgi:application
