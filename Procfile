@@ -1,1 +1,1 @@
-web: gunicorn commercecs50.wsgi:application
+web: gunicorn commerceCS50.wsgi:application
