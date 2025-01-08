@@ -9,14 +9,9 @@ from .models import User, Listing, Bid, Comment, Category, Watchlist
 from .forms import ListingForm, BidForm, CommentForm
 
 def index(request):
-    print(f"Soy request --- >>> {request.user}")
-    print(f"Soy request --- >>> {request}")
     listings = Listing.objects.filter(active=True)
     users = User.objects.all()
-    print(f"SOY user ---QuerySet--- >>> {users}")
-    print(" ----- 1 -------------- ")
     users_json = User.objects.all().values()
-    print(f"SOY user_json ----- >>> {users_json}")
     # categories = Category.objects.all()   ESTO NO HACE NADA AQUI
     return render(request, "auctions/index.html", {
         "listings": listings,
@@ -139,7 +134,6 @@ def listing_page(request, listing_id):
     bid_form = BidForm()
     comment_form = CommentForm()
     current_bids = listing.bids.all().order_by("-amount")
-    print(f'Aqui ------>>>>> {current_bids}')
     return render(request, "auctions/listing.html", {
         "listing": listing,
         "bids": current_bids,
