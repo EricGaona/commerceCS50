@@ -16,7 +16,7 @@ load_dotenv()
 # Access the environment variables 
 
 developmetn = os.environ.get('DEVELOPMENT', False)
-print(f"Soy development --- >> {developmetn}")
+# print(f"Soy development --- >> {developmetn}")
 SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 
