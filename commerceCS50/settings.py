@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'commerceCS50.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://uatdlcdhb6ttoj:pc05b131e7e9b34f57972a6e4a23cd2111a2ad3e2b54c68d9f2df95efd60613dd@c724r43q8jp5nk.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d5j9nbi0gmh2bo')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 AUTH_USER_MODEL = 'auctions.User'
