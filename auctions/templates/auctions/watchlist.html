@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %} 
+{% block title %}Watchlist{% endblock %} 
+{% block body %}
+<div class="container">
+  <h2>My Watchlist</h2>
+  <ul class="list-group">
+    {% for item in watchlist %}
+      <li class="list-group-item">
+        <a href="{% url 'listing_page' item.listing.id %}">{{ item.listing.title }}</a>
+      </li>
+    {% empty %}
+      <p>Your watchlist is empty.</p>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

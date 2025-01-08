@@ -14,13 +14,10 @@ import dj_database_url
 from dotenv import load_dotenv 
 load_dotenv() 
 # Access the environment variables 
-# VONAGE_API_KEY = os.getenv('VONAGE_API_KEY') 
-# VONAGE_API_SECRET = os.getenv('VONAGE_API_SECRET')
+
 SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 
-# print(VONAGE_API_SECRET)
-# print(VONAGE_API_KEY)
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -98,6 +95,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'auctions.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
