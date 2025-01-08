@@ -15,6 +15,8 @@ from dotenv import load_dotenv
 load_dotenv() 
 # Access the environment variables 
 
+developmetn = os.environ.get('DEVELOPMENT', False)
+print(f"Soy development --- >> {developmetn}")
 SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 
@@ -32,10 +34,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = developmetn
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['commerce-cs50-b05b33458d44.herokuapp.com', 'localhost', '127.0.0.1']
+if developmetn:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -89,16 +94,17 @@ WSGI_APPLICATION = 'commerceCS50.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
+if developmetn:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
 AUTH_USER_MODEL = 'auctions.User'
 
